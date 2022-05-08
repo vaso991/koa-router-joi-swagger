@@ -1,5 +1,6 @@
-# EXAMPLE
+# IN DEVELOPMENT. DO NOT USE FOR PRODUCTIOn.
 
+## EXAMPLE
 ```js
 const Koa = require('koa');
 const { Router, Validator, Joi, Swagger } = require('../lib');
