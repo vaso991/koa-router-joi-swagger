@@ -9,23 +9,40 @@ const app = new Koa();
 
 const router = new Router();
 
-router.get('/test', Validator({
+router.get('/test/:param1', Validator({
   query: {
     test: Joi.string().required()
   },
   body: {
-    bodyParam: Joi.string().required()
+    bodyParam: Joi.number().optional()
   },
   params: {
     param1: Joi.string().required()
   }
 }))
 
-router.use(routes.middleware());
+router.use(routes.routes());
 
-router.get('/docs', Swagger({ router, routePrefix: false }));
+router.get('/docs', Swagger({
+  router,
+  uiConfig: {
+    routePrefix: false,
+    swaggerOptions: {
+      spec: {
+        info: {
+          title: 'Test Api',
+          version: '1.0.0',
+          description: 'This is test api specs'
+        }
+      }
+    }
+  }
+}));
 
-app.use(router.allowedMethods()).use(router.middleware());
+
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
 
 app.listen(3000);
 
