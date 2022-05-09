@@ -2,10 +2,16 @@
   "name": "koa-router-joi-swagger",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/index.js",
-  "types": "types/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "node test/test.js"
+    "prepare": "npm run build",
+    "build": "npm run clean && tsc",
+    "clean": "rimraf dist",
+    "lint": "eslint"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +23,19 @@
     "statuses": "^2.0.1"
   },
   "devDependencies": {
+    "@types/joi": "^17.2.3",
+    "@types/koa-router": "^7.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "koa": "^2.13.4",
+    "koa-json-error": "^3.1.2",
+    "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
     "typescript": "^4.6.4"
   }
 }
